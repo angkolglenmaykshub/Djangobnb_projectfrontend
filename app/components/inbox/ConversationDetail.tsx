@@ -10,13 +10,13 @@ const ConversationDetail = () => {
             <div className="max-h-[400px] overflow-auto flex flex-col space-y-4">
                 <div className="w-[80%]py-4 px-6 rounded-xl bg-gray-200">
                     <p className="font-bold text-gray-500">Ankol Glen</p>
-                    <p className="text-gray-500">Hi, how are you? Its been a while since we hung out.</p>
+                    <p className="text-gray-500">Hi, Bati kaayo inyong beach daghan salabay</p>
                 </div>
 
 
                 <div className="w-[80%]py-4 ml-[20%] px-6 rounded-xl bg-blue-200">
                     <p className="font-bold text-gray-500">Glen mayks</p>
-                    <p className="text-gray-500">Well, Im good, mweheheheh. Yeah, its been a while! How have you been?</p>
+                    <p className="text-gray-500">hello, inyong beach room kay naay babae ga panoktok ig gabie</p>
                 </div>
             </div>
 
