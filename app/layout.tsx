@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import Modal from "./components/modals/Modal";
+import LoginModal from "./components/modals/LoginModal";
 
 
 const geistSans = Geist({
@@ -31,10 +32,10 @@ export default function RootLayout({
 
 
   const content = (
-    <p>Yo yo</p>
+    <p>bobords</p>
   )
   return (
-    <html lang="en">
+   <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -44,6 +45,7 @@ export default function RootLayout({
         <div className="pt-40">
           {children}
         </div>
+        <LoginModal />
       </body>
     </html>
   );
