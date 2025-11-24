@@ -1,4 +1,3 @@
-Step 4. Go to your PropertyList.tsx and paste this code:
 'use client';
 
 
