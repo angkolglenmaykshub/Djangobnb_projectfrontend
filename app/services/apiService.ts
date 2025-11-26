@@ -37,7 +37,7 @@ const apiService = {
                 method: 'POST',
                 body: data,
                 headers: {
-                    'Authorization': `Bearer`,
+                    // 'Authorization': `Bearer ${token}`
                     'Content-Type': 'application/json'
                 }
             })
@@ -56,11 +56,6 @@ const apiService = {
         })
     },
 }
-
-
-
-
-
 
 
 
