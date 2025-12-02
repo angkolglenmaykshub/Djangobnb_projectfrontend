@@ -1,6 +1,8 @@
 'use client'
 
 
+
+
 import Modal from "./Modal";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -9,6 +11,7 @@ import CustomBtn from "../forms/CustomButton";
 import apiService from "@/app/services/apiService";
 import { handleLogin } from "@/app/lib/action";
 import { stringify } from "querystring";
+
 
 
 
@@ -53,7 +56,7 @@ const SignUpModal = () => {
 
 
 
-        const response = await apiService.post('/api/auth/register/', JSON.stringify(formData));
+        const response = await apiService.postWithoutToken('/api/auth/register/', JSON.stringify(formData));
 
 
 

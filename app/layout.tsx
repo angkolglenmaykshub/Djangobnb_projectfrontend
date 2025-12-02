@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
-import Modal from "./components/modals/Modal";
 import LoginModal from "./components/modals/LoginModal";
 import SignUpModal from "./components/modals/SignupModal";
+import AddPropertyModal from "./components/modals/AddPropertyModal";
+
+
+
+
 
 
 const geistSans = Geist({
@@ -13,7 +17,7 @@ const geistSans = Geist({
 });
 
 
-const geistMono = Geist_Mono({  
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
@@ -33,10 +37,10 @@ export default function RootLayout({
 
 
   const content = (
-    <p>bobords</p>
+    <p>Yo yo</p>
   )
   return (
-   <html lang="en">
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -46,8 +50,11 @@ export default function RootLayout({
         <div className="pt-40">
           {children}
         </div>
+
+
         <LoginModal />
         <SignUpModal />
+        <AddPropertyModal />
       </body>
     </html>
   );
