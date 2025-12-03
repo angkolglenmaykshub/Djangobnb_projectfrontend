@@ -19,10 +19,13 @@ const PropertyList = () => {
 
 
     const getProperties = async () => {
-        const tmpProperties = await apiService.get('/api/properties/')
-
-
-        setProperties(tmpProperties.data)
+        try {
+            const tmpProperties = await apiService.get('/api/properties/')
+            setProperties(tmpProperties.data);
+        } catch (error) {
+            console.error('Failed to fetch properties:', error);
+            // Optionally, you could set an error state here to show a message to the user
+        }
     };
 
 
