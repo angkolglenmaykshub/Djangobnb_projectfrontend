@@ -14,18 +14,32 @@ export type PropertyType = {
 }
 
 
-const PropertyList = () => {
+interface PropertyListProps {
+    landlord_id?: string | null;
+    favorites?: boolean | null;
+}
+
+
+const PropertyList: React.FC<PropertyListProps> = ({
+    landlord_id
+    // favorites
+}) => {
     const [properties, setProperties] = useState<PropertyType[]>([]);
 
 
+    let url = '/api/properties/';
+
+
+    if (landlord_id) {
+        url += `?landlord_id=${landlord_id}`
+    }
+
+
     const getProperties = async () => {
-        try {
-            const tmpProperties = await apiService.get('/api/properties/')
-            setProperties(tmpProperties.data);
-        } catch (error) {
-            console.error('Failed to fetch properties:', error);
-            // Optionally, you could set an error state here to show a message to the user
-        }
+        const tmpProperties = await apiService.get(url)
+
+
+        setProperties(tmpProperties.data)
     };
 
 
