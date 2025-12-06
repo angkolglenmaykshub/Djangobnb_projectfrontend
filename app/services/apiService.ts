@@ -1,6 +1,9 @@
 import { getAccessToken } from "../lib/action";
 
 
+const apiHost = process.env.NEXT_PUBLIC_API_HOST || 'http://localhost:8000';
+
+
 const apiService = {
     get: async function (url: string): Promise<any> {
         console.log('get', url);
@@ -12,7 +15,7 @@ const apiService = {
 
 
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            fetch(`${apiHost}${url}`.replace(/([^:]\/)\/+/g, "$1"), {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -42,7 +45,7 @@ const apiService = {
 
 
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            fetch(`${apiHost}${url}`.replace(/([^:]\/)\/+/g, "$1"), {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -68,7 +71,7 @@ const apiService = {
 
 
         return new Promise((resolve, reject) => {
-            fetch(`${process.env.NEXT_PUBLIC_API_HOST}${url}`, {
+            fetch(`${apiHost}${url}`.replace(/([^:]\/)\/+/g, "$1"), {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -93,4 +96,10 @@ const apiService = {
 }
 
 
+
+
+
 export default apiService;
+
+
+
