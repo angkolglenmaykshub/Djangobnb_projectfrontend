@@ -1,5 +1,5 @@
 import { getUserId } from "../../lib/action";
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import apiService from "@/app/services/apiService";
 import ConversationDetail from "@/app/components/inbox/ConversationDetail";
 import { UserType } from "../page";
@@ -30,7 +30,8 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
     }
 
 
-    const conversation = await apiService.get(`/api/chat/${params.id}/`)
+    const { id } = await params;
+    const conversation = await apiService.get(`/api/chat/${id}/`)
 
 
     return (
@@ -38,7 +39,7 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
             <ConversationDetail
                 token={token}
                 userId={userId}
-                // messages={conversation.messages}
+                messages={conversation.messages}
                 conversation={conversation.conversation}
             />
         </main>
