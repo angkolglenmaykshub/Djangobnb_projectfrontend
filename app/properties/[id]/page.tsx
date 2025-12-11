@@ -43,23 +43,25 @@ const PropertyDetailPage = async (props: { params: { id: string } }) => {
                     <hr />
 
 
-                    <Link
-                        href={`/landlords/${property.landlord.id}`}
-                        className="py-6 flex items-center space-x-4"
-                    >
-                        {property.landlord.avatar_url && (
-                            <Image
-                                src={property.landlord.avatar_url}
-                                width={50}
-                                height={50}
-                                className="rounded-full"
-                                alt="The user name"
-                            />
-                        )}
+                    {property.landlord && property.landlord.id && (
+                        <Link
+                            href={`/landlords/${property.landlord.id}`}
+                            className="py-6 flex items-center space-x-4"
+                        >
+                            {property.landlord.avatar_url && (
+                                <Image
+                                    src={property.landlord.avatar_url}
+                                    width={50}
+                                    height={50}
+                                    className="rounded-full"
+                                    alt="The user name"
+                                />
+                            )}
 
 
-                        <p><strong>{property.landlord.name}</strong> is your host</p>
-                    </Link>
+                            <p><strong>{property.landlord.name}</strong> is your host</p>
+                        </Link>
+                    )}
 
 
                     <hr />

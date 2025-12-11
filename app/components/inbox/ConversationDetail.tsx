@@ -3,7 +3,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import CustomButton from "../forms/CustomButton";
-import { ConversationType } from "@/app/inbox/page";
+import {ConversationType} from "@/app/inbox/page"
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import { MessageType } from "@/app/inbox/[id]/page";
 import { UserType } from "@/app/inbox/page";
@@ -70,7 +70,7 @@ const ConversationDetail: React.FC<ConversationDetailProps> = ({
                 event: 'chat_message',
                 data: {
                     body: newMessage,
-                    name: 'John', //myUser?.name,
+                    name: myUser?.name,
                     sent_to_id: otherUser?.id,
                     conversation_id: conversation.id
                 }

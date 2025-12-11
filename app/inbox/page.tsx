@@ -1,27 +1,27 @@
-import { getUserId } from "../../lib/action";
+import { getUserId } from "../lib/action";
+import apiService from "../services/apiService";
 import React from 'react';
-import apiService from "@/app/services/apiService";
-import ConversationDetail from "@/app/components/inbox/ConversationDetail";
-import { UserType } from "../page";
-import { getAccessToken } from "../../lib/action";
+import Conversation from "../components/inbox/Conversation";
 
 
-export type MessageType = {
+export type UserType = {
     id: string;
     name: string;
-    body: string;
-    conversationId: string;
-    sent_to: UserType;
-    created_by: UserType
+    avatar_url: string;
 }
 
 
-const ConversationPage = async ({ params }: { params: { id: string } }) => {
+export type ConversationType = {
+    id: string;
+    users: UserType[];
+}
+
+
+const InboxPage = async () => {
     const userId = await getUserId();
-    const token = await getAccessToken();
 
 
-    if (!userId || !token) {
+    if (!userId) {
         return (
             <main className="max-w-[1500px] max-auto px-6 py-12">
                 <p>You need to be authenticated...</p>
@@ -30,21 +30,26 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
     }
 
 
-    const { id } = await params;
-    const conversation = await apiService.get(`/api/chat/${id}/`)
+    const conversations = await apiService.get('/api/chat/')
 
 
     return (
-        <main className="max-w-[1500px] mx-auto px-6 pb-6">
-            <ConversationDetail
-                token={token}
-                userId={userId}
-                messages={conversation.messages}
-                conversation={conversation.conversation}
-            />
+        <main className="max-w-[1500px] mx-auto px-6 pb-6 space-y-4">
+            <h1 className="my-6 text-2xl">Inbox</h1>
+
+
+            {conversations.map((conversation: ConversationType) => {
+                return (
+                    <Conversation
+                        userId={userId}
+                        key={conversation.id}
+                        conversation={conversation}
+                    />
+                )
+            })}
         </main>
     )
 }
 
 
-export default ConversationPage;
+export default InboxPage;
